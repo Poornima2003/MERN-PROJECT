@@ -5,7 +5,15 @@ const app=express();
 
 dotenv.config({path:'./config.env'});
 require('./db/conn');
+
+
+app.use(express.json());
+
 const User=require('./model/userSchema');
+
+//we link the router folder
+app.use(require('./router/auth'));
+
 
 const PORT=process.env.PORT;
 
