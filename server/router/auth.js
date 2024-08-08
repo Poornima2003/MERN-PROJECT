@@ -2,6 +2,8 @@ const express=require('express');
 const router=express.Router();
 require('../db/conn');
 const User=require("../model/userSchema");
+const bcrypt =require('bcryptjs')
+const jwt=require('jsonwebtoken')
 
 
 router.get('/',(req,res)=>{
@@ -43,6 +45,7 @@ router.get('/',(req,res)=>{
 //using async await
 
 router.post('/register', async(req,res)=>{
+  let token;
     const {name,email,phone,work,password,cpassword}=req.body;
 if(!name || !email|| !phone || !work || !password || !cpassword){
     return res.status(422).json({error: "plz give correct data"});
@@ -84,14 +87,45 @@ router.post('/signin',async(req,res)=>{
       if(!email || !password){
         return res.status(400).json({error:"pls fill the data"})
       }
+
+
       const userlogin=await User.findOne({email:email});
 
-      console.log(userlogin);
-      if(!userlogin){
-        res.status(400).json({error:"user error"})
-      }else{
-        res.json({message:"user signin sucessfully"})
+      
+
+      if(userlogin){
+        const plainPassword = String(password);
+            const hashedPassword = String(userlogin.password);
+
+            console.log('Plain Password (string):', plainPassword);
+            console.log('Hashed Password from DB:', hashedPassword);
+            console.log('Type of Plain Password:', typeof plainPassword);
+            console.log('Type of Hashed Password:', typeof hashedPassword);
+
+            const isMatch = await bcrypt.compare(plainPassword, hashedPassword);
+
+
+
+            const token =await  userlogin.generateAuthToken();
+            console.log(token);
+            
+
+        if(!isMatch){
+          res.status(400).json({error:"Invalid Credientials pass"})
+        }else{
+          res.json({message:"user signin sucessfully"});
+        }
       }
+      else{
+        res.status(400).json({error:"Invalid Credientials"});
+      }
+    
+
+      
+      
+
+
+      
       
       
 
