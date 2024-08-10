@@ -45,7 +45,7 @@ router.get('/',(req,res)=>{
 //using async await
 
 router.post('/register', async(req,res)=>{
-  let token;
+ 
     const {name,email,phone,work,password,cpassword}=req.body;
 if(!name || !email|| !phone || !work || !password || !cpassword){
     return res.status(422).json({error: "plz give correct data"});
@@ -82,6 +82,7 @@ console.log(err);
 router.post('/signin',async(req,res)=>{
     // console.log(req.body);
     // res.json({message:"awsome"})
+    let token;
     try{
       const {email,password}=req.body;
       if(!email || !password){
@@ -105,16 +106,25 @@ router.post('/signin',async(req,res)=>{
             const isMatch = await bcrypt.compare(plainPassword, hashedPassword);
 
 
-
-            const token =await  userlogin.generateAuthToken();
-            console.log(token);
+           
+      
             
 
         if(!isMatch){
           res.status(400).json({error:"Invalid Credientials pass"})
-        }else{
-          res.json({message:"user signin sucessfully"});
         }
+        const token =await  userlogin.generateAuthToken();
+        console.log(token);
+
+        res.cookie('jwtoken',token,{
+          expires:new Date(Date.now()+25892000000),
+          httpOnly:true
+        });
+            
+        
+        
+          res.json({message:"user signin sucessfully"});
+        
       }
       else{
         res.status(400).json({error:"Invalid Credientials"});

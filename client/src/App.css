@@ -1,0 +1,566 @@
+/* styles.css */
+
+/* Navbar styles */
+.navbar {
+  background-color: #f8f9fa; /* Light background color for the navbar */
+  padding: 0.5rem 1rem; /* Adjust padding */
+}
+
+.navbar-brand {
+  font-size: 1.5rem; /* Font size for the brand */
+  font-weight: bold; /* Make the brand text bold */
+}
+
+.navbar-brand img{
+  width: 100px;
+  height: 50px;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 1rem; /* Space between nav items */
+}
+
+.nav-link {
+  color: #343a40; /* Dark text color for nav links */
+  font-size: 1rem; /* Font size for nav links */
+}
+
+.nav-link.active {
+  font-weight: bold; /* Make the active link bold */
+  color: #007bff; /* Change color for active link */
+}
+
+.nav-link:hover {
+  color: #0056b3; /* Color change on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive styles for navbar toggler */
+@media (max-width: 992px) {
+  .navbar-nav {
+    margin-top: 1rem; /* Space at the top for mobile view */
+  }
+
+  .nav-item {
+    margin-left: 0; /* Remove left margin on mobile */
+  }
+}
+
+/* Additional styles if needed */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif; /* Default font family */
+}
+
+.container {
+  padding: 2rem; /* Add padding to the container */
+}
+
+/* signup */
+
+/* styles.css */
+
+/* Signup section styling */
+/* Signup section styling */
+.signup {
+  background: #f8f9fa; /* Light background color for the section */
+  padding: 2rem 0; /* Padding around the section */
+}
+
+.signup .container {
+  max-width: 1200px; /* Increase the max-width for larger screens */
+  margin: 0 auto; /* Center the container horizontally */
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between the form and the image */
+}
+
+.signup-content {
+  background: #ffffff; /* White background for the form */
+  padding: 2rem; /* Padding inside the content */
+  border-radius: 8px; /* Rounded corners for the content */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow around the content */
+  width: 100%; /* Ensure it takes full width of container */
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  gap: 2rem; /* Space between form and image */
+}
+
+.signup-form {
+  flex: 1; /* Allow the form to take up space */
+  padding: 2rem;
+  background: #ffffff; /* White background for the form */
+  border-radius: 8px; /* Rounded corners for the form */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow around the form */
+}
+
+.form-title {
+  margin-bottom: 1rem; /* Margin below the title */
+  font-size: 1.5rem; /* Font size for the title */
+  font-weight: bold; /* Make the title bold */
+  color: #333; /* Dark color for the title */
+}
+
+/* Form styling */
+.form-control {
+  border-radius: 0.25rem; /* Rounded corners for form inputs */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Input shadow */
+}
+
+.form-label {
+  font-weight: bold; /* Make the labels bold */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Primary button background color */
+  border: none; /* Remove border */
+  border-radius: 0.25rem; /* Rounded corners for button */
+  padding: 0.5rem 1rem; /* Padding inside the button */
+  font-size: 1rem; /* Font size for the button text */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+.signup-image {
+  flex: 1; /* Allow the image to take up space */
+  padding: 2rem; /* Adjust padding around the image */
+}
+
+.signup-image img {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Rounded corners for the image */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .signup-content {
+    flex-direction: column; /* Stack the form and image vertically */
+    text-align: center; /* Center align text */
+  }
+
+  .signup-image {
+    margin-top: 2rem; /* Margin above the image when stacked */
+  }
+}
+
+
+/* contact */
+
+.contact_info_item .cimg {
+  width: 50px;
+  height: 50px;
+}
+
+/* contact */
+
+/* Contact section styling */
+.contact_info {
+  background: #f8f9fa; /* Light background color for the section */
+  padding: 2rem 0; /* Padding around the section */
+}
+
+.contact_info .container-fluid {
+  padding: 0; /* Remove padding for fluid container */
+}
+
+.contact_info_item {
+  background: #ffffff; /* White background for each item */
+  padding: 1rem; /* Padding inside each item */
+  border-radius: 8px; /* Rounded corners for items */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow around items */
+  flex: 1; /* Allow items to take up space */
+}
+
+.contact_info_item .cimg {
+  width: 50px; /* Set the desired width */
+  height: 50px; /* Set the desired height */
+  margin-right: 1rem; /* Space between image and text */
+}
+
+.contact_info_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact_info_title {
+  font-weight: bold; /* Bold text for title */
+  color: #333; /* Dark color for title */
+  margin-bottom: 0.5rem; /* Space below title */
+}
+
+.contact_info_text {
+  color: #666; /* Lighter color for text */
+}
+
+/* Contact form styling */
+.contact_form {
+  background: #ffffff; /* White background for the form section */
+  padding: 2rem 0; /* Padding around the section */
+}
+
+.contact_form_container {
+  background: #f8f9fa; /* Light background for form container */
+  padding: 2rem; /* Padding inside the form container */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow around the container */
+}
+
+.contact_form_title {
+  font-size: 1.5rem; /* Font size for the title */
+  font-weight: bold; /* Make the title bold */
+  color: #333; /* Dark color for the title */
+  margin-bottom: 1rem; /* Space below the title */
+}
+
+.input_field {
+  width: 100%; /* Full width inputs */
+  padding: 0.75rem; /* Padding inside inputs */
+  margin-bottom: 1rem; /* Space between inputs */
+  border: 1px solid #ced4da; /* Border for inputs */
+  border-radius: 0.25rem; /* Rounded corners for inputs */
+}
+
+.text_field {
+  width: 100%; /* Full width textarea */
+  padding: 0.75rem; /* Padding inside textarea */
+  border: 1px solid #ced4da; /* Border for textarea */
+  border-radius: 0.25rem; /* Rounded corners for textarea */
+}
+
+.contact_form_button {
+  text-align: center; /* Center align the button */
+}
+
+.button {
+  background-color: #007bff; /* Primary button background color */
+  border: none; /* Remove border */
+  border-radius: 0.25rem; /* Rounded corners for button */
+  color: #fff; /* White text color */
+  padding: 0.75rem 1.5rem; /* Padding inside the button */
+  font-size: 1rem; /* Font size for the button text */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .contact_info_item {
+    flex-direction: column;
+    align-items: center; /* Center align items when stacked */
+    text-align: center; /* Center align text */
+    margin-bottom: 1rem; /* Margin below each item */
+  }
+
+  .contact_info_item .cimg {
+    margin-right: 0; /* Remove margin when stacked */
+    margin-bottom: 0.5rem; /* Margin below image */
+  }
+
+  .contact_form_container {
+    padding: 1rem; /* Reduce padding for smaller screens */
+  }
+}
+
+
+/* home */
+
+
+/* home page styling */
+
+.home-page {
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  min-height: 100vh; /* Full viewport height */
+  background: linear-gradient(to right, #add8e6 50%, #ffffff 50%); /* Light blue to white gradient background */
+  padding: 1rem; /* Add padding to avoid content touching edges on small screens */
+}
+
+.home-div {
+  text-align: center; /* Center text horizontally */
+  background: #ffffff; /* White background for the content box */
+  padding: 2rem; /* Padding inside the content box */
+  border-radius: 8px; /* Rounded corners for the content box */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow around the content box */
+  max-width: 90%; /* Limit width to prevent overflow on small screens */
+  margin: auto; /* Center horizontally */
+}
+
+.home-div p {
+  font-size: 1.5rem; /* Font size for the paragraph */
+  color:rgb(49, 29, 110); /* Dark color for the paragraph */
+  margin-bottom: 1rem; /* Space below the paragraph */
+}
+
+.home-div h1 {
+  font-size: 3rem; /* Font size for the heading */
+  font-weight: bold; /* Bold text for the heading */
+  color: #181717; /* Dark color for the heading */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-div {
+    padding: 1.5rem; /* Reduce padding on smaller screens */
+  }
+
+  .home-div p {
+    font-size: 1.25rem; /* Reduce font size of the paragraph */
+  }
+
+  .home-div h1 {
+    font-size: 2.5rem; /* Reduce font size of the heading */
+  }
+}
+
+@media (max-width: 576px) {
+  .home-div {
+    padding: 1rem; /* Further reduce padding on very small screens */
+  }
+
+  .home-div p {
+    font-size: 1rem; /* Further reduce font size of the paragraph */
+  }
+
+  .home-div h1 {
+    font-size: 2rem; /* Further reduce font size of the heading */
+  }
+}
+
+/* about */
+
+/* General styling for the About page */
+.container.emp-profile {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-img img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-head h5 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.profile-head h6 {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.profile-rating {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.profile-rating span {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.profile-work {
+  margin-top: 1rem;
+}
+
+.profile-work p {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.profile-work a {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.profile-work a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.profile-edit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  position: absolute; /* Position the button absolutely */
+  top: 1rem; /* Distance from the top */
+  right: 1rem; /* Distance from the right */
+}
+
+.profile-edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.profile-tab label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.profile-tab p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Tabs styling */
+.nav-tabs {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid #ddd;
+  border-radius: 5px 5px 0 0;
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.tab-content {
+  border: 1px solid #ddd;
+  border-radius: 0 0 5px 5px;
+  padding: 1.5rem;
+  background-color: #fff;
+}
+
+/* Responsive design for different screen sizes */
+@media (min-width: 576px) {
+  .container.emp-profile {
+    position: relative; /* Allow positioning of the edit button */
+  }
+}
+
+@media (max-width: 992px) {
+  .container.emp-profile {
+    padding: 1.5rem;
+  }
+
+  .profile-head h5 {
+    font-size: 2rem;
+  }
+
+  .profile-head h6 {
+    font-size: 1.25rem;
+  }
+
+  .profile-img img {
+    max-width: 150px;
+  }
+
+  .profile-work {
+    margin-top: 2rem;
+    text-align: center; /* Center text for smaller screens */
+  }
+
+  .profile-work p {
+    font-size: 1.1rem;
+  }
+
+  .profile-work a {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+  }
+
+  .profile-edit-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    top: 1rem; /* Adjust position */
+    right: 1rem; /* Adjust position */
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .col-md-4,
+  .col-md-6 {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-img {
+    order: 1;
+  }
+
+  .profile-work {
+    order: 2;
+    margin-top: 2rem;
+    text-align: center; /* Center text for smaller screens */
+  }
+
+  .profile-edit-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    top: 0.5rem; /* Adjust position for smaller screens */
+    right: 0.5rem; /* Adjust position for smaller screens */
+  }
+
+  .col-md-4,
+  .col-md-6 {
+    flex: 100%; /* Stack columns on top of each other */
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-head h5 {
+    font-size: 1.5rem;
+  }
+
+  .profile-head h6 {
+    font-size: 1rem;
+  }
+
+  .profile-img img {
+    max-width: 100px;
+  }
+
+  .profile-work {
+    margin-top: 2rem;
+    text-align: center; /* Center text for smaller screens */
+  }
+
+  .profile-work p {
+    font-size: 1rem;
+  }
+
+  .profile-work a {
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+  }
+
+  .profile-edit-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
