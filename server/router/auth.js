@@ -61,7 +61,7 @@ try{
    }else{
     const user=new User({name,email,phone,work,password,cpassword})
     await user.save();
-    res.status(422).json({error:"user registered successfully"});
+    res.status(201).json({error:"user registered successfully"});
        
    }
    

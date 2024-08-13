@@ -564,3 +564,95 @@ body {
   }
 }
 
+/* error page */
+/* App.css or Errorpage.css */
+
+#notfound {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.notfound {
+  text-align: center;
+}
+
+.notfound-404 {
+  font-size: 100px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.notfound h2 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.notfound p {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.notfound a {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.notfound a:hover {
+  background: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .notfound-404 {
+    font-size: 80px;
+  }
+
+  .notfound h2 {
+    font-size: 20px;
+  }
+
+  .notfound p {
+    font-size: 14px;
+  }
+
+  .notfound a {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notfound-404 {
+    font-size: 60px;
+  }
+
+  .notfound h2 {
+    font-size: 18px;
+  }
+
+  .notfound p {
+    font-size: 12px;
+  }
+
+  .notfound a {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

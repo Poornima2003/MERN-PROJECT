@@ -1,61 +1,61 @@
-const dotenv=require('dotenv');
-const mongoose=require('mongoose');
-const express =require('express');
-const app=express();
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const express = require('express');
+const cors = require('cors');
+const app = express();
 
-dotenv.config({path:'./config.env'});
+// Load environment variables from .env file
+dotenv.config({ path: './config.env' });
+
+// Connect to MongoDB
 require('./db/conn');
 
+// Middleware
+app.use(express.json()); // Parse JSON bodies
+app.use(cors()); // Enable CORS
 
-app.use(express.json());
+// Import User model
+const User = require('./model/userSchema');
 
-const User=require('./model/userSchema');
+// Link the router folder
+app.use(require('./router/auth')); // Ensure this file exports your routes
 
-//we link the router folder
-app.use(require('./router/auth'));
+const PORT = process.env.PORT || 5000;
 
-
-const PORT=process.env.PORT;
-
-
-
-//middleware
-
-const middleware=(req,res,next)=>{
-console.log('hello middleware');
-next();
-
+// Middleware function
+const middleware = (req, res, next) => {
+    console.log('Hello middleware');
+    next(); // Pass control to the next middleware
 };
 
-
-app.get('/',(req,res)=>{
-res.send(`hello world from the server`)
+// Routes
+app.get('/', (req, res) => {
+    res.send('Hello world from the server');
 });
 
-// about me
-app.get('/about',middleware,(req,res)=>{
-    res.send('aboutme');
+app.get('/about', middleware, (req, res) => {
+    res.send('About me');
 });
 
-//contact
-app.get('/contact',(req,res)=>{
-    res.send('contact form');
-})
-
-
-//login
-app.get('/signin',(req,res)=>{
-    res.send('login here');
+app.get('/contact', (req, res) => {
+    res.send('Contact form');
 });
 
-//register
-app.get('/signup',(req,res)=>{
-    res.send("register your account herrr")
-})
+app.get('/signin', (req, res) => {
+    res.send('Login here');
+});
 
+app.get('/signup', (req, res) => {
+    res.send('Register your account here');
+});
 
-app.listen(PORT,()=>{
-    console.log(`server is running at port 3000`);
-    
-})
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
 
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running at port ${PORT}`);
+});
