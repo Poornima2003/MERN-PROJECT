@@ -2,8 +2,11 @@ const express=require('express');
 const router=express.Router();
 require('../db/conn');
 const User=require("../model/userSchema");
+const authenticate =require("../middleware/authenticate")
 const bcrypt =require('bcryptjs')
 const jwt=require('jsonwebtoken')
+const cookieParser = require("cookie-parser");
+router.use(cookieParser());
 
 
 router.get('/',(req,res)=>{
@@ -145,6 +148,54 @@ router.post('/signin',async(req,res)=>{
      
     }
 })
+
+
+router.get('/about',authenticate,(req,res)=>{
+  console.log('hello my about');
+  res.send(req.rootUser);
+  
+  
+})
+
+
+// user data for contact us form
+router.get('/getdata',authenticate,(req,res)=>{
+  console.log('hello my about');
+  res.send(req.rootUser);
+})
+
+
+// contact us page
+router.post('/contact', authenticate,async(req, res) => {
+  try {
+
+    const {name,email,phone,message}=req.body;
+    if(!name || !email || !phone || !message){
+      console.log("error in contact form");
+      
+      return res.json({error:"plz fill the contact form"})
+    }
+    const userContact= await User.findOne({_id:req.userID})
+    if(userContact){
+      
+
+      const userMessage=await userContact.addMessage(name,email,phone,message);
+      await userContact.save();
+      res.status(201).json({message:"user contact sussecfully"})
+    }
+  } catch (error) {
+    console.log(error);
+    
+  }
+});
+
+router.get('/logout',(req,res)=>{
+  console.log('hello my logout Page');
+  res.clearCookie('jwtoken',{path:'/'})
+  res.status(200).send('User Logout');
+  
+  
+});
 
 
 

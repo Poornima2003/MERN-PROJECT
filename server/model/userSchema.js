@@ -1,68 +1,97 @@
-const mongoose=require('mongoose');
-const bcrypt=require('bcryptjs');
-const jwt=require('jsonwebtoken')
-const userSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        reuired:true
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
     },
-    email:{
-        type:String,
-        reuired:true
+    email: {
+        type: String,
+        required: true
     },
-    phone:{
-        type:Number,
-        reuired:true
+    phone: {
+        type: Number,
+        required: true
     },
-    work:{
-        type:String,
-        reuired:true
+    work: {
+        type: String,
+        required: true
     },
-    password:{
-        type:String,
-        reuired:true
+    password: {
+        type: String,
+        required: true
     },
-    cpassword:{
-        type:String,
-        reuired:true
+    cpassword: {
+        type: String,
+        required: true
     },
-    tokens:[
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    messages: [{
+        name: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true
+        },
+        phone: {
+            type: Number,
+            required: true
+        },
+        message: {
+            type: String,
+            required: true
+        }
+    }],
+    tokens: [
         { 
-            token:{
-                type:String,
-                reuired:true
+            token: {
+                type: String,
+                required: true
             }
         }
     ]
-})
+});
 
-
-
-//we are hashing password
-
-userSchema.pre('save',async function(next) {
-  console.log("hashhhh");
-  
-   if(this.isModified('password')){
-    this.password=await bcrypt.hash(this.password,12);
-    this.cpassword=await bcrypt.hash(this.cpassword,12);
-   }
-   next();
-})
-
-//generating auth token
-userSchema.methods.generateAuthToken =async function () {
-    try{
-          let token=jwt.sign({_id:this._id},process.env.SECRET_KEY);
-          this.tokens=this.tokens.concat({token:token});
-          await this.save();
-          return this.save();
+// Hash passwords before saving
+userSchema.pre('save', async function(next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 12);
+        this.cpassword = await bcrypt.hash(this.cpassword, 12);
     }
-    catch(err){
+    next();
+});
+
+// Generate authentication token
+userSchema.methods.generateAuthToken = async function() {
+    try {
+        const token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
+        this.tokens = this.tokens.concat({ token: token });
+        await this.save();
+        return token;
+    } catch (err) {
         console.log(err);
-        
+        throw new Error('Token generation failed');
     }
-}
+};
 
-const User=mongoose.model('USER',userSchema);
-module.exports=User;
+// Add message to user
+userSchema.methods.addMessage = async function(name, email, phone, message) {
+    try {
+        this.messages = this.messages.concat({ name, email, phone, message });
+        await this.save();
+        return this.messages;
+    } catch (error) {
+        console.log(error);
+        throw new Error('Message saving failed');
+    }
+};
+
+const User = mongoose.model('USER', userSchema);
+module.exports = User;

@@ -1,21 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import profile from '../images/profilr.avif'
+import {useNavigate} from 'react-router-dom';
+import aboutpic from '../images/pic.jpg'
 
 const About = () => {
+
+  const[userData,setUserData]=useState({});
+  const navigate=useNavigate();
+
+const callAboutPage=async()=>{
+  
+  try {
+    const res=await fetch('/about',{
+      method:"GET",
+      headers:{
+        Accept:'application/json',
+        'Content-Type':'application/json'
+      },
+      credentials:"include"
+    })
+    const data=await res.json();
+    console.log(data);
+    setUserData(data);
+    
+
+    if(res.status !== 200){
+      const error=new Error(res.error || 'falied to fetch');
+      throw error;
+    }
+    
+    
+  } catch (err) {
+    console.log(err);
+    navigate('/login')
+    
+  }
+}
+
+
+  useEffect(()=>{
+       callAboutPage();
+  },[]);
+
+  
   return (
     <>
       <div className='container emp-profile'>
-        <form method="">
+        <form method="GET">
           <div className='row'>
             <div className='col-md-4'>
               <div className='profile-img'>
-                <img src={profile} alt="Profile" />
+                <img src={userData.name === "poornima" ?aboutpic:profile} alt="Profile" />
               </div>
             </div>
             <div className='col-md-6'>
               <div className='profile-head'>
-                <h5>Poornima Theurkar</h5>
-                <h6>Web Developer</h6>
+                <h5>{userData.name}</h5>
+                <h6>{userData.work}</h6>
                 <p className='profile-rating mt-3 mb-5'>RANKINGS:<span>1/10</span></p>
                 <ul className="nav nav-tabs" role='tablist'>
                   <li className="nav-item">
@@ -52,7 +93,7 @@ const About = () => {
                       <label>User ID</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>238u48u385u0</p>
+                      <p>{userData._id}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -60,7 +101,7 @@ const About = () => {
                       <label>Name</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Poornima Theurkar</p>
+                      <p>{userData.name}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -68,7 +109,7 @@ const About = () => {
                       <label>Email</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>theurkar0@gmail.com</p>
+                      <p>{userData.email}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -76,15 +117,15 @@ const About = () => {
                       <label>Phone Number</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>+91 23445354678</p>
+                      <p>{userData.phone}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
                     <div className='col-md-6'>
-                      <label>Address</label>
+                      <label>Profession</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Pune, India</p>
+                      <p>{userData.work}</p>
                     </div>
                   </div>
                 </div>

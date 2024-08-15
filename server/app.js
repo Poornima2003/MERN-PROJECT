@@ -1,8 +1,11 @@
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+
 const express = require('express');
 const cors = require('cors');
+
 const app = express();
+
 
 // Load environment variables from .env file
 dotenv.config({ path: './config.env' });
@@ -37,9 +40,9 @@ app.get('/about', middleware, (req, res) => {
     res.send('About me');
 });
 
-app.get('/contact', (req, res) => {
-    res.send('Contact form');
-});
+// app.get('/contact', (req, res) => {
+//     res.send('Contact form');
+// });
 
 app.get('/signin', (req, res) => {
     res.send('Login here');
